@@ -1,0 +1,35 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+      configuration_aliases = [
+        aws.europe_london,
+        aws.north_america_north_virginia
+      ]
+    }
+  }
+  
+  backend "s3" {
+    bucket     = "ctrlplusaltplusdefeat-configuration"
+    key        = "terraform.tfstate"
+
+    encrypt    = true
+  }
+}
+
+module "s3" {
+  source = "./s3"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
+
+module "iam" {
+  source = "./iam"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
