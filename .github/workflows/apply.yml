@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Download Terrafomr Plan
+      - name: Download Terraform Plan
         uses: dawidd6/action-download-artifact@v2
         with:
           name: plan
-          workflow: apply.yml
+          workflow: plan.yml
           workflow_conclusion: success
           commit: ${{ github.event.pull_request.head.sha }}
           path: ./artifacts
