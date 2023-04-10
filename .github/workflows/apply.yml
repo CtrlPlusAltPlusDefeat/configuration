@@ -27,8 +27,8 @@ jobs:
           workflow: plan.yml
           workflow_conclusion: success
           commit: ${{ github.event.pull_request.head.sha }}
-          path: ./artifacts
-
+          path: ./aws-configuration
+          
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.4.4
@@ -39,4 +39,4 @@ jobs:
 
       - name: Apply Terraform
         working-directory: ./aws-configuration
-        run: terraform apply /artifacts/terraform.plan
+        run: terraform apply ./terraform.plan
