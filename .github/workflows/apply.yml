@@ -16,7 +16,7 @@ jobs:
   apply:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    environment: github
+    environment: aws
     steps:
       - uses: actions/checkout@v3
 
@@ -34,7 +34,9 @@ jobs:
           terraform_version: 1.4.4
 
       - name: Initialise Terraform
+        working-directory: ./aws-configuration
         run: terraform init
 
       - name: Apply Terraform
+        working-directory: ./aws-configuration
         run: terraform apply ./artifacts/terraform.plan
