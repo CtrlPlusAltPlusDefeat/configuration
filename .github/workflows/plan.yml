@@ -47,8 +47,7 @@ jobs:
 
       - name: Archive Terraform Plan
         uses: actions/upload-artifact@v3
-        working-directory: ./aws-configuration
         with:
           name: plan
-          path: terraform.plan
+          path: ./aws-configuration/terraform.plan
           if-no-files-found: error
