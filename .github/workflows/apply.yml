@@ -28,7 +28,7 @@ jobs:
           workflow_conclusion: success
           commit: ${{ github.event.pull_request.head.sha }}
           path: ./aws-configuration
-
+          
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.4.4
