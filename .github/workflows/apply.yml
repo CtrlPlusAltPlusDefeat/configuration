@@ -39,4 +39,4 @@ jobs:
 
       - name: Apply Terraform
         working-directory: ./aws-configuration
-        run: terraform apply ./artifacts/terraform.plan
+        run: terraform apply /artifacts/terraform.plan
