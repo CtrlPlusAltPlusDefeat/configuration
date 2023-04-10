@@ -1,0 +1,53 @@
+name: plan
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: plan-${{ github.head_ref }}
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.4
+
+      - name: Initialise Terraform
+        working-directory: ./aws-configuration
+        run: terraform init
+
+      - name: Validate Terraform
+        working-directory: ./aws-configuration
+        run: terraform validate
+
+      - name: Plan Terraform
+        id: plan
+        working-directory: ./aws-configuration
+        run: terraform plan -out=terraform.plan
+
+      - uses: robburger/terraform-pr-commenter@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commenter_type: plan
+          commenter_input: ${{ format('{0}{1}', steps.plan.outputs.stdout, steps.plan.outputs.stderr) }}
+          commenter_exitcode: ${{ steps.plan.outputs.exitcode }}
+
+      - name: Archive Terraform Plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: plan
+          path: ./aws-configuration/terraform.plan
+          if-no-files-found: error
