@@ -33,3 +33,11 @@ module "iam" {
     aws.europe_london = aws.europe_london
   }
 }
+
+module "cloudfront" {
+  source = "./cloudfront"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
