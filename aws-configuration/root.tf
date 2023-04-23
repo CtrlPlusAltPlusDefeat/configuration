@@ -34,8 +34,32 @@ module "iam" {
   }
 }
 
+module "iam_role" {
+  source = "./iam_role"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
+
 module "cloudfront" {
   source = "./cloudfront"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
+
+module "lambda" {
+  source = "./lambda"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
+
+module "security_group" {
+  source = "./security_group"
 
   providers = {
     aws.europe_london = aws.europe_london
