@@ -12,5 +12,5 @@ data "aws_iam_policy_document" "lambda_execution_policy_document" {
     }
   }
 
-  provider = aws.europe_ireland
+  provider = aws.europe_london
 }
