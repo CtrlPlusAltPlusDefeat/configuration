@@ -41,3 +41,11 @@ module "cloudfront" {
     aws.europe_london = aws.europe_london
   }
 }
+
+module "lambda" {
+  source = "./lambda"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
