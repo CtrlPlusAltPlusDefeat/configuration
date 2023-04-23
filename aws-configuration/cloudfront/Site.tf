@@ -1,3 +1,7 @@
+resource "aws_cloudfront_origin_access_identity" "site_identity" {
+  provider = aws.europe_london
+}
+
 resource "aws_cloudfront_origin_access_control" "site_control" {
   name                              = data.aws_s3_bucket.site_s3.bucket_domain_name
   description                       = data.aws_s3_bucket.site_s3.bucket_domain_name
