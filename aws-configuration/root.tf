@@ -34,6 +34,14 @@ module "iam" {
   }
 }
 
+module "iam_roles" {
+  source = "./iam_roles"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
+
 module "cloudfront" {
   source = "./cloudfront"
 
