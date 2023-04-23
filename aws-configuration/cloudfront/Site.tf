@@ -1,7 +1,3 @@
-resource "aws_cloudfront_origin_access_identity" "site_identity" {
-  provider = aws.europe_london
-}
-
 resource "aws_cloudfront_origin_access_control" "site_control" {
   name                              = data.aws_s3_bucket.site_s3.bucket_domain_name
   description                       = data.aws_s3_bucket.site_s3.bucket_domain_name
@@ -31,10 +27,6 @@ resource "aws_cloudfront_distribution" "site" {
     domain_name = data.aws_s3_bucket.site_s3.bucket_regional_domain_name
     origin_id   = data.aws_s3_bucket.site_s3.bucket
     origin_access_control_id = aws_cloudfront_origin_access_control.site_control.id
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.site_identity.cloudfront_access_identity_path
-    }
   }
 
   default_cache_behavior {
