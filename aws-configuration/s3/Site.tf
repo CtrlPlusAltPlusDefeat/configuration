@@ -36,7 +36,7 @@ resource "aws_s3_bucket_policy" "site_policy" {
             "Sid": "PolicyForCloudFrontPrivateContent",
             "Effect": "Allow",
             "Principal": {
-              "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E237COLFHZV8AY"
+              "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E3923QY7X36GT8"
             },
             "Action": "s3:GetObject",
             "Resource": "arn:aws:s3:::ctrlplusaltplusdefeat-site/*"
