@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      configuration_aliases = [ aws.europe_ireland ]
+      configuration_aliases = [ aws.europe_london ]
     }
   }
 }
