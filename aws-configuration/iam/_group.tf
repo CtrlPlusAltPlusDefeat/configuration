@@ -8,7 +8,8 @@ resource "aws_iam_group_membership" "iam_group_membership" {
   name = "ManagedByTerraformMembership"
 
   users = [
-    aws_iam_user.terraform.name
+    aws_iam_user.terraform.name,
+    aws_iam_user.github.name
   ]
 
   group    = aws_iam_group.iam_group.name
