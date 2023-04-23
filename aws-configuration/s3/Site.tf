@@ -36,10 +36,15 @@ resource "aws_s3_bucket_policy" "site_policy" {
             "Sid": "PolicyForCloudFrontPrivateContent",
             "Effect": "Allow",
             "Principal": {
-              "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E3923QY7X36GT8"
+              "Service": "cloudfront.amazonaws.com"
             },
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::ctrlplusaltplusdefeat-site/*"
+            "Resource": "arn:aws:s3:::ctrlplusaltplusdefeat-site/*",
+            "Condition": {
+              "StringEquals": {
+                "aws:SourceArn": "arn:aws:cloudfront::847934878252:distribution/EP0EOYTPLZU7V"
+              }
+            }
         },
         {
             "Sid": "DenyIncorrectEncryptionHeader",
