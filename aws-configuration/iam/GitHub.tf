@@ -82,9 +82,9 @@ resource "aws_iam_user_policy" "github_policy_lambda" {
         "lambda:UpdateFunctionCode"
       ],
       "Resource": [
-        "arn:aws:lambda:eu-west-2:847934878252:function:Disconnect",
-        "arn:aws:lambda:eu-west-2:847934878252:function:Connect",
-        "arn:aws:lambda:eu-west-2:847934878252:function:Default"
+        "arn:aws:lambda:eu-west-2:847934878252:function:disconnect",
+        "arn:aws:lambda:eu-west-2:847934878252:function:connect",
+        "arn:aws:lambda:eu-west-2:847934878252:function:default"
       ],
       "Effect": "Allow"
     }
