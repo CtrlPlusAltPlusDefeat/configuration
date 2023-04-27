@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "disconnect_function" {
-  function_name    = "Migrator"
+  function_name    = "Disconnect"
   package_type     = "Zip"
   runtime          = "go1.x"
   handler          = "main"
