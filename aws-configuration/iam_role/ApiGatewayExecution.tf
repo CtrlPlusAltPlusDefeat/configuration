@@ -1,6 +1,6 @@
 resource "aws_iam_role" "apigateway_execution" {
   name = "APIGatewayExecution"
-  assume_role_policy = data.aws_iam_policy_document.api_gateway_execution_policy_document.json
+  assume_role_policy = data.aws_iam_policy_document.apigateway_execution_policy_document.json
 
   provider = aws.europe_london
 }
