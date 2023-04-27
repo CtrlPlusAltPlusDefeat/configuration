@@ -2,6 +2,8 @@ resource "aws_lambda_function" "disconnect_function" {
   function_name    = "Migrator"
   package_type     = "Zip"
 
+  filename         = "./lambda/_code.zip"
+
   role             = data.aws_iam_role.lambda_iam_role.arn
 
   timeout          = 30
