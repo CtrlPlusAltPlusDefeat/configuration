@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "connect_function" {
-  function_name    = "Connect"
+  function_name    = "connect"
   package_type     = "Zip"
   runtime          = "go1.x"
   handler          = "main"

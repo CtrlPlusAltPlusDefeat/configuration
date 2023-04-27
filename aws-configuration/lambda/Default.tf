@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "default_function" {
-  function_name    = "Default"
+  function_name    = "default"
   package_type     = "Zip"
   runtime          = "go1.x"
   handler          = "main"
