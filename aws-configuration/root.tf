@@ -73,3 +73,11 @@ module "apigateway" {
     aws.europe_london = aws.europe_london
   }
 }
+
+module "dynamodb" {
+  source = "./dynamodb"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
