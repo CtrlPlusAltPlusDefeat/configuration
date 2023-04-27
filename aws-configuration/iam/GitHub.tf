@@ -45,7 +45,6 @@ EOF
   provider = aws.europe_london
 }
 
-
 resource "aws_iam_user_policy" "github_policy_cloudfront" {
   name     = "github-cloudfront"
   user     = aws_iam_user.github.name
@@ -61,6 +60,31 @@ resource "aws_iam_user_policy" "github_policy_cloudfront" {
       ],
       "Resource": [
         "*"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+
+  provider = aws.europe_london
+}
+
+resource "aws_iam_user_policy" "github_policy_lambda" {
+  name     = "github-lambda"
+  user     = aws_iam_user.github.name
+  policy   = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "lambda:UpdateFunctionCode"
+      ],
+      "Resource": [
+        "arn:aws:lambda:eu-west-2:847934878252:function:Disconnect",
+        "arn:aws:lambda:eu-west-2:847934878252:function:Connect",
+        "arn:aws:lambda:eu-west-2:847934878252:function:Default"
       ],
       "Effect": "Allow"
     }
