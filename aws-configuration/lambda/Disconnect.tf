@@ -2,7 +2,7 @@ resource "aws_lambda_function" "disconnect_function" {
   function_name    = "Migrator"
   package_type     = "Zip"
   runtime          = "go1.x"
-  handler          = "main"
+  handler          = "helloworld"
 
   filename         = "./lambda/_code.zip"
 
