@@ -1,6 +1,8 @@
 resource "aws_lambda_function" "disconnect_function" {
   function_name    = "Migrator"
   package_type     = "Zip"
+  runtime          = "go1.x"
+  handler          = "main"
 
   filename         = "./lambda/_code.zip"
 
@@ -12,7 +14,13 @@ resource "aws_lambda_function" "disconnect_function" {
   vpc_config {
     subnet_ids         = local.subnet_ids
     security_group_ids = [data.aws_security_group.lambda_security.id]
-   }
+  }
+
+  #lifecycle {
+  #  ignore_changes = [
+  #    filename
+  #  ]
+  #}
 
   provider = aws.europe_london
 }
