@@ -1,5 +1,5 @@
 locals {
-  subnet_ids = ["subnet-0d3bfdac5af4e9c71", "subnet-0d1bde86352e75b2b", "subnet-0c5a5cbd5a89085f1"]
+  subnet_ids = ["subnet-0c13306ed1110d72b", "subnet-0924e5edbe03c3150", "subnet-04ae8c6987e2cc906"]
 }
 
 data "aws_iam_role" "lambda_iam_role" {
