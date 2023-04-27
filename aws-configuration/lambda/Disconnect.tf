@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "disconnect_function" {
-  function_name    = "Disconnect"
+  function_name    = "disconnect"
   package_type     = "Zip"
   runtime          = "go1.x"
   handler          = "main"
