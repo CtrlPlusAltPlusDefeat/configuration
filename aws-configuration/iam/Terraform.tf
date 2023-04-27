@@ -144,3 +144,26 @@ EOF
 
   provider = aws.europe_london
 }
+
+resource "aws_iam_user_policy" "terraform_policy_apigateway" {
+  name     = "terraform-apigateway"
+  user     = aws_iam_user.terraform.name
+  policy   = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+          "apigateway:*"
+        ],
+      "Effect": "Allow",
+      "Resource": [
+          "*"
+        ]
+    }
+  ]
+}
+EOF
+
+  provider = aws.europe_ireland
+}
