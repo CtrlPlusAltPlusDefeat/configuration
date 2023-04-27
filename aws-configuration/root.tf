@@ -65,3 +65,11 @@ module "security_group" {
     aws.europe_london = aws.europe_london
   }
 }
+
+module "apigateway" {
+  source = "./apigateway"
+
+  providers = {
+    aws.europe_london = aws.europe_london
+  }
+}
