@@ -165,5 +165,5 @@ resource "aws_iam_user_policy" "terraform_policy_apigateway" {
 }
 EOF
 
-  provider = aws.europe_ireland
+  provider = aws.europe_london
 }
