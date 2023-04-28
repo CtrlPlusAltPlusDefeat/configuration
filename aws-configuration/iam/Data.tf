@@ -41,21 +41,22 @@ resource "aws_iam_user_policy" "data_policy_dynamodb" {
   user     = aws_iam_user.data.name
   policy   = <<EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:PutItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
-            ],
-            "Resource": "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:GetItem",
+        "dynamodb:Query"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection"
+      ],
+      "Effect": "Allow"
+    }
+  ]
 }
 EOF
 
