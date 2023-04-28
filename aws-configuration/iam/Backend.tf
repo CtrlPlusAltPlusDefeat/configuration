@@ -38,7 +38,7 @@ resource "aws_secretsmanager_secret_version" "backend_secret_access_key_version"
 
 resource "aws_iam_user_policy" "backend_policy_secretsmanager" {
   name     = "backend-secretsmanager"
-  user     = aws_iam_user.data.name
+  user     = aws_iam_user.backend.name
   policy   = <<EOF
 {
   "Version": "2012-10-17",
