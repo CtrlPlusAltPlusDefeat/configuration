@@ -36,6 +36,31 @@ resource "aws_secretsmanager_secret_version" "data_secret_access_key_version" {
   secret_string = aws_iam_access_key.data_access_key.secret
 }
 
+resource "aws_iam_user_policy" "data_policy_secretsmanager" {
+  name     = "data-secretsmanager"
+  user     = aws_iam_user.data.name
+  policy   = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "secretsmanager:DescribeSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:aws:secretsmanager:eu-west-2:847934878252:secret:DataAccessKey-XFlnjB",
+        "arn:aws:secretsmanager:eu-west-2:847934878252:secret:DataSecretAccessKey-UL0RgE"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+
+  provider = aws.europe_london
+}
+
 resource "aws_iam_user_policy" "data_policy_dynamodb" {
   name     = "data-dynamodb"
   user     = aws_iam_user.data.name
