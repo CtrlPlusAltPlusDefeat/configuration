@@ -13,3 +13,10 @@ data "aws_security_group" "lambda_security" {
 
   provider = aws.europe_london
 } 
+
+
+data "aws_lambda_layer_version" "lambda_secretsmanager_layer" {
+  layer_name = "AWS-Parameters-and-Secrets-Lambda-Extension"
+
+  provider = aws.europe_london
+}
