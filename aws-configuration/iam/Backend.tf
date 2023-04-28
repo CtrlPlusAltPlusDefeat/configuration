@@ -36,8 +36,8 @@ resource "aws_secretsmanager_secret_version" "backend_secret_access_key_version"
   secret_string = aws_iam_access_key.backend_access_key.secret
 }
 
-resource "aws_iam_user_policy" "backend_policy_secretsmanager" {
-  name     = "backend-secretsmanager"
+resource "aws_iam_user_policy" "backend_policy_apigateway" {
+  name     = "backend-apigateway"
   user     = aws_iam_user.backend.name
   policy   = <<EOF
 {
@@ -45,12 +45,10 @@ resource "aws_iam_user_policy" "backend_policy_secretsmanager" {
   "Statement": [
     {
       "Action": [
-        "secretsmanager:DescribeSecret",
-        "secretsmanager:GetSecretValue"
+        "execute-api:ManageConnections"
       ],
       "Resource": [
-        "arn:aws:secretsmanager:eu-west-2:847934878252:secret:BackendAccessKey*",
-        "arn:aws:secretsmanager:eu-west-2:847934878252:secret:BackendSecretAccessKey*"
+        "arn:aws:execute-api:eu-west-2:847934878252:35hlhhl6z3/default/*/*"
       ],
       "Effect": "Allow"
     }
