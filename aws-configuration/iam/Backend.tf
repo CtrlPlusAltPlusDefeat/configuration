@@ -74,7 +74,8 @@ resource "aws_iam_user_policy" "backend_policy_dynamodb" {
         "dynamodb:DeleteItem",
         "dynamodb:UpdateItem",
         "dynamodb:GetItem",
-        "dynamodb:Query"
+        "dynamodb:Query",
+        "dynamodb:Scan"
       ],
       "Resource": [
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection"
