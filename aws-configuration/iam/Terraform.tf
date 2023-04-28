@@ -190,3 +190,26 @@ EOF
 
   provider = aws.europe_london
 }
+
+resource "aws_iam_user_policy" "terraform_policy_secretsmanager" {
+  name     = "terraform-secretsmanager"
+  user     = aws_iam_user.terraform.name
+  policy   = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+          "secretsmanager:*"
+        ],
+      "Effect": "Allow",
+      "Resource": [
+          "*"
+        ]
+    }
+  ]
+}
+EOF
+
+  provider = aws.europe_london
+}
