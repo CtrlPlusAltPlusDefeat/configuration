@@ -1,19 +1,8 @@
-locals {
-  subnet_ids = ["subnet-0c13306ed1110d72b", "subnet-0924e5edbe03c3150", "subnet-04ae8c6987e2cc906"]
-}
-
 data "aws_iam_role" "lambda_iam_role" {
   name = "LambdaExecution"
 
   provider = aws.europe_london
 }
-
-data "aws_security_group" "lambda_security" {
-  name = "Lambda"
-
-  provider = aws.europe_london
-} 
-
 
 data "aws_lambda_layer_version" "lambda_secretsmanager_layer" {
   layer_name = "arn:aws:lambda:eu-west-2:133256977650:layer:AWS-Parameters-and-Secrets-Lambda-Extension"
