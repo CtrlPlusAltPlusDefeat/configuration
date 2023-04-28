@@ -9,6 +9,15 @@ resource "aws_security_group" "lambda" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+
+    self = true
+  }
 
   provider = aws.europe_london
 }
