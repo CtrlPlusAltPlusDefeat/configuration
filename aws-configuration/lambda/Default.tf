@@ -10,6 +10,8 @@ resource "aws_lambda_function" "default_function" {
 
   timeout          = 30
   memory_size      = 128
+
+  layers           = [ data.aws_lambda_layer_version.lambda_secretsmanager_layer.arn ]
   
   vpc_config {
     subnet_ids         = local.subnet_ids
