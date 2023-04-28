@@ -16,9 +16,7 @@ resource "aws_security_group" "lambda" {
     to_port   = 443
     protocol  = "tcp"
 
-    security_groups = [
-      aws_security_group.lambda.id
-    ]
+    self = true
   }
 
   provider = aws.europe_london
