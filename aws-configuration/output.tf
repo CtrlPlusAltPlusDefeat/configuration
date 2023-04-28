@@ -16,11 +16,11 @@ output "iam_github_secret_access_key" {
   sensitive = true
 }
 
-output "iam_data_access_key" {
-  value = module.iam.data_access_key
+output "iam_backend_access_key" {
+  value = module.iam.backend_access_key
 }
 
-output "iam_data_secret_access_key" {
-  value     = module.iam.data_secret_access_key
+output "iam_backend_secret_access_key" {
+  value     = module.iam.backend_secret_access_key
   sensitive = true
 }
