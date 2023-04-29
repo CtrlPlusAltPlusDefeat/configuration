@@ -77,6 +77,7 @@ resource "aws_iam_user_policy" "backend_policy_dynamodb" {
       ],
       "Resource": [
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection",
+        "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection/index/SessionIdIndex",
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Lobby",
         "arn:aws:dynamodb:eu-west-2:847934878252:table/LobbyPlayer"
       ],
