@@ -59,12 +59,6 @@ resource "aws_apigatewayv2_route" "websocket_disconnect_route" {
   target                   = "integrations/${aws_apigatewayv2_integration.websocket_disconnect_integration.id}"
 }
 
-resource "aws_apigatewayv2_route_response" "websocket_disconnect_route_response" {
-  api_id                   = aws_apigatewayv2_api.websocket.id
-  route_id                 = aws_apigatewayv2_route.websocket_disconnect_route.id
-  route_response_key       = "$default"
-}
-
 # Connect Route
 resource "aws_apigatewayv2_route" "websocket_connect_route" {
   api_id                   = aws_apigatewayv2_api.websocket.id
@@ -72,23 +66,11 @@ resource "aws_apigatewayv2_route" "websocket_connect_route" {
   target                   = "integrations/${aws_apigatewayv2_integration.websocket_connect_integration.id}"
 }
 
-resource "aws_apigatewayv2_route_response" "websocket_connect_route_response" {
-  api_id                   = aws_apigatewayv2_api.websocket.id
-  route_id                 = aws_apigatewayv2_route.websocket_connect_route.id
-  route_response_key       = "$default"
-}
-
 # Default Route
 resource "aws_apigatewayv2_route" "websocket_default_route" {
   api_id                   = aws_apigatewayv2_api.websocket.id
   route_key                = "$default"
   target                   = "integrations/${aws_apigatewayv2_integration.websocket_default_integration.id}"
-}
-
-resource "aws_apigatewayv2_route_response" "websocket_default_route_response" {
-  api_id                   = aws_apigatewayv2_api.websocket.id
-  route_id                 = aws_apigatewayv2_route.websocket_default_route.id
-  route_response_key       = "$default"
 }
 
 # Stage
