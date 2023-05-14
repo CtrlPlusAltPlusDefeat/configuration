@@ -79,7 +79,8 @@ resource "aws_iam_user_policy" "backend_policy_dynamodb" {
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection",
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Connection/index/SessionIdIndex",
         "arn:aws:dynamodb:eu-west-2:847934878252:table/Lobby",
-        "arn:aws:dynamodb:eu-west-2:847934878252:table/LobbyPlayer"
+        "arn:aws:dynamodb:eu-west-2:847934878252:table/LobbyPlayer",
+        "arn:aws:dynamodb:eu-west-2:847934878252:table/LobbyChat"
       ],
       "Effect": "Allow"
     }
