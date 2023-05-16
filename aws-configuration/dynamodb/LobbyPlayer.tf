@@ -18,4 +18,14 @@ resource "aws_dynamodb_table" "lobby_player_table" {
     name = "SessionId"
     type = "S"
   }
+  
+  global_secondary_index {
+    name               = "SessionIdIndex"
+    hash_key           = "SessionId"
+
+    write_capacity     = 1
+    read_capacity      = 1
+
+    projection_type    = "ALL"
+  }
 }
